@@ -4,8 +4,8 @@ import time
 
 VOLT = 3.3
 
-TEMP_PIN = 3
-LIGHT_PIN = 2
+TEMP_PIN = 4
+LIGHT_PIN = 3
 
 def delay(ms):
 	time.sleep(ms / 1000.0)
@@ -16,7 +16,7 @@ def readTemp():
 	tempC = (voltage - 0.5) * 100.0
 	tempF = (tempC * 9.0 / 5.0) + 32.0
 
-	print('Voltage: ' + str(voltage) + ' TempC: ' + str(tempC) + ' TempF ' + str(tempF))
+	print('Value: ' + str(value) + ' TempC: ' + str(tempC) + ' TempF ' + str(tempF))
 
 def readLight():
 	value = analog_read(LIGHT_PIN)
