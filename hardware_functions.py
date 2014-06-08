@@ -26,7 +26,3 @@ def readLight():
 	return value 
 
 
-while (1):
-	readTemp()
-	readLight()
-	delay(1000)
