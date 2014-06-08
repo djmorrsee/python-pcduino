@@ -1,29 +1,36 @@
 from bin.pcduino.adc import analog_read
 
-import time
+from bin.network.send_data import *
 
+from bin.util.calibration import *
+import random
+
+# Our boards voltage
 VOLT = 3.3
 
+# 0,1 are 6 bit; 2-4 are 12 bit
 TEMP_PIN = 4
-LIGHT_PIN = 3
+LIGHT_PIN = 2
 
-def delay(ms):
-	time.sleep(ms / 1000.0)
+THIS_MODULE_NUMBER = 1 # Set yours to 2 if you notice!!!
 
-def readTemp():
-	value = analog_read(TEMP_PIN)
-	voltage = (value * VOLT) / 4096.0	
-	tempC = (voltage - 0.5) * 100.0
-	tempF = (tempC * 9.0 / 5.0) + 32.0
+#Use this for the duino
+def GetReading(pin):
+	return SmoothReading(analog_read, 10, pin)
 
-	print('Value: ' + str(value) + ' TempC: ' + str(tempC) + ' TempF ' + str(tempF))
+#Use this on a non-arduino
+def GetDummyReading(pin):
+	return random.randint(0, 4096)
 
-def readLight():
-	value = analog_read(LIGHT_PIN)
-	print('Intensity: ' + str(value))
+def Main():
+	# Read Temp
+	temp = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
 
+	# Read Light
+	light = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
 
-while (1):
-	readTemp()
-	readLight()
-	delay(1000)
+	# Send Data
+	url = 'http://127.0.0.1:5000/echo/'
+	PostData(url, temp, light, THIS_MODULE_NUMBER)
+
+Main()
