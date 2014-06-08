@@ -30,7 +30,7 @@ def Main():
 	light = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
 
 	# Send Data
-	url = 'http://127.0.0.1:5000/echo/'
+	url = 'http://127.0.0.1:5000/dj_echo/'
 	PostData(url, temp, light, THIS_MODULE_NUMBER)
 
 Main()
