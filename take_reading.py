@@ -1,11 +1,18 @@
 from bin.pcduino.adc import analog_read
 from bin.network.send_data import *
+from bin.util.constants import *
 from bin.util.calibration import *
+
 
 import random
 from constants import *
 
+
+import random
+
+
 SERVER_URL = 'http://127.0.0.1:5000/post_reading'
+#SERVER_URL = 'http://remote-light.herokuapp.com/echo/'
 
 #Use this for the duino
 def GetReading(pin):

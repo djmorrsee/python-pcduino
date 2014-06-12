@@ -1,6 +1,6 @@
 ### Mein
 .venv/
-
+constants.py
 *.pyc
 .DS_STORE
 
