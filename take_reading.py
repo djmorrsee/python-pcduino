@@ -1,18 +1,12 @@
 from bin.pcduino.adc import analog_read
 from bin.network.send_data import *
+from bin.util.constants import *
 from bin.util.calibration import *
 import random
 
-# Our boards voltage
-VOLT = 3.3
 
-# 0,1 are 6 bit; 2-4 are 12 bit
-TEMP_PIN = 4
-LIGHT_PIN = 2
 
-THIS_MODULE_NUMBER = 1 # Set yours to 2 if you notice!!!
-
-SERVER_URL = 'http://127.0.0.1:5000/post_reading'
+SERVER_URL = 'http://remote-light.herokuapp.com/echo/'
 
 #Use this for the duino
 def GetReading(pin):
