@@ -2,8 +2,9 @@
 .venv/
 
 *.pyc
-constants.py
 .DS_STORE
+
+constants.py
 
 #############
 ## Python
