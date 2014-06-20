@@ -1,12 +1,10 @@
 ####Forked from https://github.com/pcduino/python-pcduino
 
-The files in this repo contain wrappers for easy interaction with the various I/O pins on pcDuino
+The deployment branch for the arduino.
 
-They have been adapted for my own deployment needs
+This is setup to be cloned somewhere on the pcDuino and just run. The python-pcDuino package is included
 
-##ADC Features:
->- Analog Read
 
-##GPIO Features:
->- Digital Read
->- Digital Write
+## Take_Reading.py
+
+A standalone python program meant to be run on a pcDuino.
