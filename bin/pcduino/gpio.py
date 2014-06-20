@@ -1,25 +1,16 @@
 from pinmap import PinMap
 
 
-__all__ = ['HIGH', 'LOW', 'INPUT', 'OUTPUT','digital_write', 'digital_read',
-           "pin_mode"]
+__all__ = ['HIGH', 'LOW', 'INPUT', 'OUTPUT','digital_write', 'digital_read', "pin_mode"]
 
 HIGH = 1
 LOW = 0
 INPUT = 0
 OUTPUT = 1
 
-gpio_pins = PinMap(
-    '/sys/devices/virtual/misc/gpio/pin',
-    'gpio',
-    20
-)
+gpio_pins = PinMap('/sys/devices/virtual/misc/gpio/pin', 'gpio', 20)
 
-gpio_mode_pins = PinMap(
-    '/sys/devices/virtual/misc/gpio/mode/',
-    'gpio',
-    20
-)
+gpio_mode_pins = PinMap('/sys/devices/virtual/misc/gpio/mode/', 'gpio', 20)
 
 def digital_write(channel, value):
     """Write to a GPIO channel"""
