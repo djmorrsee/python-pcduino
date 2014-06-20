@@ -1,17 +1,10 @@
 from bin.pcduino.adc import analog_read
-from bin.network.send_data import *
+from bin.network.server_comm import *
 from bin.util.constants import *
 from bin.util.calibration import *
-
-
-import random
-from constants import *
-
-
 import random
 
-
-SERVER_URL = 'http://127.0.0.1:5000/post_reading'
+SERVER_URL = 'http://127.0.0.1:5000/module/post_reading/'
 #SERVER_URL = 'http://remote-light.herokuapp.com/echo/'
 
 #Use this for the duino
@@ -24,14 +17,16 @@ def GetDummyReading(pin):
 
 def Main():
 	# Read Temp
-	temp = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
-	#temp = GetReading(TEMP_PIN)
+	temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
+	# temp = GetTemp(temp_pin_reading)
+
 
 	# Read Light
-	light = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
+	light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
 	#light = GetReading(LIGHT_PIN)
 
 	# Send Data
-	PostData(SERVER_URL, temp, light, MODULE_ID)
+	json_data = FormJSONData(MODULE_ID, MODULE_AUTH_ID, temp_pin_reading, light_pin_reading)
+	PostJSONToServer(json_data, SERVER_URL)
 
 Main()
