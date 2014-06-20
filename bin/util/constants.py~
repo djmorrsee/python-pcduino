@@ -1,0 +1,4 @@
+VOLT = 3.3
+
+TEMP_PIN = 4
+LIGHT_PIN = 3
