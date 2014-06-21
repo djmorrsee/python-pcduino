@@ -2,6 +2,7 @@ from bin.pcduino.adc import analog_read
 from bin.network.server_comm import *
 from bin.util.constants import *
 from bin.util.calibration import *
+from bin.util.authorization import *
 import random
 
 SERVER_URL = 'http://127.0.0.1:5000/module/post_reading/'
@@ -26,7 +27,10 @@ def Main():
 	#light = GetReading(LIGHT_PIN)
 
 	# Send Data
-	json_data = FormJSONData(MODULE_ID, MODULE_AUTH_ID, temp_pin_reading, light_pin_reading)
-	PostJSONToServer(json_data, SERVER_URL)
+	m_auth_id = GetModuleAuthorizationID()
+	json_data = FormReadingJSON(MODULE_ID, m_auth_id, temp_pin_reading, light_pin_reading)
+	r = PostJSONToServer(json_data, SERVER_URL)
+	print(r.status_code)
+	print(r.text)
 
 Main()
