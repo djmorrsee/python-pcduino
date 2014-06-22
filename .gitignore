@@ -1,10 +1,10 @@
 ### Mein
 .venv/
-constants.py
 *.pyc
 .DS_STORE
 
 constants.py
+m_auth_id.txt
 
 #############
 ## Python
