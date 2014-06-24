@@ -1,10 +1,12 @@
 ## @package Module Authorization Code
 
+## Saves authorizatioin ID during registration
+#@param m_auth_id given at reistaration
 def SaveModuleAuthorizationID(m_auth_id):
 	file = open('bin/util/m_auth_id.txt', 'w+')
 	file.write(m_auth_id)
 	file.close()
-
+##Returns the authorization id if there is one
 def GetModuleAuthorizationID():
 	file = open('bin/util/m_auth_id.txt', 'r')
 	if file:
