@@ -1,6 +1,7 @@
 ### Mein
 .venv/
 *.pyc
+*.conf
 .DS_STORE
 
 constants.py
