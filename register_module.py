@@ -1,11 +1,9 @@
-from bin.network.server_comm import *
-from bin.util.authorization import *
-from bin.util.constants import *
-
+from bin.network.server_comm import PostJSONToServer, FormRegistrationJSON
+from bin.util.constants import MODULE_ID, AUTH_ID
+from bin.util.authorization import SaveModuleAuthorizationID
 
 # SERVER_URL = 'http://remote-light.herokuapp.com/module/%i/' % MODULE_ID
 SERVER_URL = 'http://192.168.1.108:5000/module/%i/' % MODULE_ID
-
 
 ##Function for contacting the server and registering the PcDuino
 def Register ():
@@ -20,12 +18,5 @@ def Register ():
     else:
         print('Not Registered')
         print(r.text)
-
-##Function for removoving  the pCduino from the server
-def UnRegister():
-
-    data = FormRegistrationJSON(AUTH_ID)
-    r = DeleteJSONToServer(data, SERVER_URL)
-    print(r.status_code)
 
 Register()

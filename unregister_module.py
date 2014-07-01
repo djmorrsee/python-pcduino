@@ -6,9 +6,8 @@ SERVER_URL = 'http://192.168.1.108:5000/module/%i/' % MODULE_ID
 
 ##Function for removoving  the pCduino from the server
 def UnRegister():
-
-		data = FormRegistrationJSON(AUTH_ID)
-		r = DeleteJSONToServer(data, SERVER_URL)
-		print(r.text)
+	data = FormRegistrationJSON(AUTH_ID)
+	r = DeleteJSONToServer(data, SERVER_URL)
+	print(r.text)
 
 UnRegister()
