@@ -1,5 +1,4 @@
-from bin.network.server_comm import DeleteJSONToServer
-from bin.util.authorization import FormRegistrationJSON
+from bin.network.server_comm import DeleteJSONToServer, FormRegistrationJSON
 from bin.util.constants import MODULE_ID, AUTH_ID
 
 # SERVER_URL = 'http://remote-light.herokuapp.com/module/%i/' % MODULE_ID
