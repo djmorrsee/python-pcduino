@@ -18,13 +18,13 @@ def GetDummyReading(pin):
 
 def Main():
 	# Read Temp
-	temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
-	# temp = GetTemp(temp_pin_reading)
+	# temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
+	temp_pin_reading = GetTemp(TEMP_PIN)
 
 
 	# Read Light
-	light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
-	#light = GetReading(LIGHT_PIN)
+	# light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
+	light_pin_reading = GetReading(LIGHT_PIN)
 
 	# Send Data
 	m_auth_id = GetModuleAuthorizationID()
