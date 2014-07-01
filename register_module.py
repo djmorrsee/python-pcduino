@@ -4,7 +4,7 @@ from bin.util.constants import MODULE_ID
 AUTH_ID = 111
 
 # SERVER_URL = 'http://remote-light.herokuapp.com/module/%i/' % MODULE_ID
-SERVER_URL = 'http://192.169.1.108:5000/module/%i/' % MODULE_ID
+SERVER_URL = 'http://192.168.1.108:5000/module/%i/' % MODULE_ID
 
 
 ##Function for contacting the server and registering the PcDuino
