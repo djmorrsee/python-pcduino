@@ -20,7 +20,7 @@ def Register ():
     else:
         print('Not Registered')
         print(r.text)
-        
+
 ##Function for removoving  the pCduino from the server
 def UnRegister():
 

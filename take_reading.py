@@ -5,7 +5,7 @@ from bin.util.calibration import *
 from bin.util.authorization import *
 import random
 
-SERVER_URL = 'http://192.169.1.108:5000/module/post_reading/'
+SERVER_URL = 'http://192.168.1.108:5000/module/post_reading/'
 #SERVER_URL = 'http://remote-light.herokuapp.com/echo/'
 
 #Use this for the duino
