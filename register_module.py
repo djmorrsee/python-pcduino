@@ -20,8 +20,9 @@ def Register ():
     is already in use the bad reqistraion staus code wil be printed
 
     """
-    data = None
+    data = FormRegistrationJSON(AUTH_ID)
     r = PostJSONToServer(data, SERVER_URL)
+    
     if r.status_code == 200:
         if r.text != 'Bad Module ID':
             SaveModuleAuthorizationID(r.text)
