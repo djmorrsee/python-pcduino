@@ -1,3 +1,10 @@
+""" 
+
+This file is the main function that the pcduino will run.
+It will take a reading from the sensors and the send the data to the server.
+It will also send an API requests to delete all data older than 24 hours.
+"""
+
 from bin.pcduino.adc import analog_read
 from bin.network.server_comm import *
 from bin.util.constants import *
@@ -5,32 +12,50 @@ from bin.util.calibration import *
 from bin.util.authorization import *
 import random
 
-SERVER_URL = 'http://127.0.0.1:5000/module/post_reading/'
-#SERVER_URL = 'http://remote-light.herokuapp.com/echo/'
+#SERVER_URL = 'http://127.0.0.1:5000/module/post_reading/'
+SERVER_URL = 'http://remote-light.herokuapp.com/module/post_reading/'
 
-#Use this for the duino
+
+
 def GetReading(pin):
-	return SmoothReading(analog_read, 10, pin)
+    """ Function for getting an averaged reading from one of the sensor pins.
+    
+    :param pin: the pin number the sensor requested
+    :type pin: int 
+    :returns: double -- the averaged reading from the pin 
+    
+    """
+     
+    return SmoothReading(analog_read, 10, pin)
 
-#Use this on a non-arduino
+
 def GetDummyReading(pin):
-	return random.randint(0, 4096)
+    """ A funnction for get a fake reading for testing
+    
+    :returns: self explanatory
+    """
+    return random.randint(0, 4096)
 
 def Main():
-	# Read Temp
-	temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
-	# temp = GetTemp(temp_pin_reading)
+    """Main
+    
+    This function will take light and temperature raadings, format the data
+    into JSON and send it our server. It will print the status code returned
+    and will request that old data be deleted from the database 
+    """
+  
+    temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
+    # temp = GetTemp(temp_pin_reading)
 
 
-	# Read Light
-	light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
-	#light = GetReading(LIGHT_PIN)
+    light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
+    #light = GetReading(LIGHT_PIN)
 
-	# Send Data
-	m_auth_id = GetModuleAuthorizationID()
-	json_data = FormReadingJSON(MODULE_ID, m_auth_id, temp_pin_reading, light_pin_reading)
-	r = PostJSONToServer(json_data, SERVER_URL)
-	print(r.status_code)
-	print(r.text)
+ 
+    m_auth_id = GetModuleAuthorizationID()
+    json_data = FormReadingJSON(MODULE_ID, m_auth_id, temp_pin_reading, light_pin_reading)
+    r = PostJSONToServer(json_data, SERVER_URL)
+    print(r.status_code)
+    print(r.text)
 
 Main()
