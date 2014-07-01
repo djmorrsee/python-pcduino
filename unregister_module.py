@@ -9,6 +9,6 @@ def UnRegister():
 
 		data = FormRegistrationJSON(AUTH_ID)
 		r = DeleteJSONToServer(data, SERVER_URL)
-		print(r.status_code)
+		print(r.text)
 
 UnRegister()
