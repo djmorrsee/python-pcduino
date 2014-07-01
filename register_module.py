@@ -1,7 +1,7 @@
 from bin.network.server_comm import *
 from bin.util.authorization import *
-from bin.util.constants import MODULE_ID
-AUTH_ID = 111
+from bin.util.constants import *
+
 
 # SERVER_URL = 'http://remote-light.herokuapp.com/module/%i/' % MODULE_ID
 SERVER_URL = 'http://192.168.1.108:5000/module/%i/' % MODULE_ID

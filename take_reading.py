@@ -30,7 +30,6 @@ def Main():
 	m_auth_id = GetModuleAuthorizationID()
 	json_data = FormReadingJSON(MODULE_ID, m_auth_id, temp_pin_reading, light_pin_reading)
 	r = PostJSONToServer(json_data, SERVER_URL)
-	print(r.status_code)
 	print(r.text)
 
 Main()
