@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 """
 
 This file is the main function that the pcduino will run.
@@ -45,12 +45,12 @@ def TakeReading():
 	into JSON and send it our server. It will print the status code returned
 	and will request that old data be deleted from the database
 	"""
-	#temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
+	#temp_pin_reading = SmoothReading(GetDummyReading, 10, TEMP_PIN)
 	temp_pin_reading = GetReading(TEMP_PIN)
 
 
 
-	#light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
+	#light_pin_reading = SmoothReading(GetDummyReading, 10, LIGHT_PIN)
 	light_pin_reading = GetReading(LIGHT_PIN)
 
 
