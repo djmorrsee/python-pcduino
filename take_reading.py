@@ -19,7 +19,7 @@ def GetDummyReading(pin):
 def Main():
 	# Read Temp
 	# temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
-	temp_pin_reading = GetTemp(TEMP_PIN)
+	temp_pin_reading = GetReading(TEMP_PIN)
 
 
 	# Read Light
