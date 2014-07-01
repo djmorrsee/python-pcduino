@@ -2,7 +2,7 @@
 """ 
 from bin.util.crono import *
 
-def SmoothReading(func, deg, ms=100, *args):
+def SmoothReading(func, deg, *args):
   """Avereges the return of func over deg times
   
   :param func: The function to be averaged
@@ -16,10 +16,10 @@ def SmoothReading(func, deg, ms=100, *args):
   
   :param *args: the arguments to be passed to func
   """
-  
   assert deg > 0
+
   val = 0
   for i in range(0, deg):
     val += func(*args)
-    delay(ms)
+    delay(100)
   return val / deg

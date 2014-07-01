@@ -13,9 +13,8 @@ from bin.util.authorization import *
 import random
 
 #SERVER_URL = 'http://127.0.0.1:5000/module/post_reading/'
-SERVER_URL = 'http://remote-light.herokuapp.com/module/post_reading/'
-
-
+#SERVER_URL = 'http://remote-light.herokuapp.com/module/post_reading/'
+SERVER_URL = 'http://192.168.1.108:5000/module/post_reading/'
 
 def GetReading(pin):
     """ Function for getting an averaged reading from one of the sensor pins.
@@ -37,25 +36,24 @@ def GetDummyReading(pin):
     return random.randint(0, 4096)
 
 def Main():
-    """Main
+        """Main
     
     This function will take light and temperature raadings, format the data
     into JSON and send it our server. It will print the status code returned
     and will request that old data be deleted from the database 
     """
-  
-    temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
-    # temp = GetTemp(temp_pin_reading)
+	#temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
+	temp_pin_reading = GetReading(TEMP_PIN)
 
 
-    light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
-    #light = GetReading(LIGHT_PIN)
 
- 
-    m_auth_id = GetModuleAuthorizationID()
-    json_data = FormReadingJSON(MODULE_ID, m_auth_id, temp_pin_reading, light_pin_reading)
-    r = PostJSONToServer(json_data, SERVER_URL)
-    print(r.status_code)
-    print(r.text)
+	#light_pin_reading = SmoothReading(GetDummyReading, 10, 100, LIGHT_PIN)
+	light_pin_reading = GetReading(LIGHT_PIN)
+
+	
+	m_auth_id = GetModuleAuthorizationID()
+	json_data = FormReadingJSON(MODULE_ID, m_auth_id, temp_pin_reading, light_pin_reading)
+	r = PostJSONToServer(json_data, SERVER_URL)
+	print(r.text)
 
 Main()

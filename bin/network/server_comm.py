@@ -64,7 +64,7 @@ def FormReadingJSON(m_id, m_auth_id, temp, light):
     reading = {'temperature':temp, 'light':light}
     data.update({'reading':reading})
     return data
-## Used to form registration data into JSON
+
 def FormRegistrationJSON(auth_id):
     """For delete request only
     
