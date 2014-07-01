@@ -19,31 +19,31 @@ import random
 SERVER_URL = 'http://192.168.1.108:5000/module/post_reading/'
 
 def GetReading(pin):
-    """ Function for getting an averaged reading from one of the sensor pins.
+	""" Function for getting an averaged reading from one of the sensor pins.
 
-    :param pin: the pin number the sensor requested
-    :type pin: int
-    :returns: double -- the averaged reading from the pin
+	:param pin: the pin number the sensor requested
+	:type pin: int
+	:returns: double -- the averaged reading from the pin
 
-    """
+	"""
 
-    return SmoothReading(analog_read, 10, pin)
+	return SmoothReading(analog_read, 10, pin)
 
 
 def GetDummyReading(pin):
-    """ A funnction for get a fake reading for testing
+	""" A funnction for get a fake reading for testing
 
-    :returns: self explanatory
-    """
-    return random.randint(0, 4096)
+	:returns: self explanatory
+	"""
+	return random.randint(0, 4096)
 
 def TakeReading():
-    """ Take Sensor Readings
+	""" Take Sensor Readings
 
-    This function will take light and temperature raadings, format the data
-    into JSON and send it our server. It will print the status code returned
-    and will request that old data be deleted from the database
-    """
+	This function will take light and temperature raadings, format the data
+	into JSON and send it our server. It will print the status code returned
+	and will request that old data be deleted from the database
+	"""
 	#temp_pin_reading = SmoothReading(GetDummyReading, 10, 100, TEMP_PIN)
 	temp_pin_reading = GetReading(TEMP_PIN)
 
