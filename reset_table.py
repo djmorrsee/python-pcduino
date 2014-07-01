@@ -5,8 +5,8 @@ Requires Proper Authorization, and the server to be responding
 from bin.network.server_comm import DeleteJSONToServer, FormRegistrationJSON
 from bin.util.constants import AUTH_ID
 
-# SERVER_URL = 'http://remote-light.herokuapp.com/reset/'
-SERVER_URL = 'http://192.168.1.108:5000/reset/'
+SERVER_URL = 'http://remote-light.herokuapp.com/reset/'
+# SERVER_URL = 'http://192.168.1.108:5000/reset/'
 
 
 def ResetTable():
