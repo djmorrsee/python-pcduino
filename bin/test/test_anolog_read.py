@@ -1,6 +1,4 @@
-
 #!/usr/bin/env python2.7.7
-# -*- coding: utf-8 -*-
 
 # Unittesting
 #Only run this test on the pcdouino
@@ -26,7 +24,7 @@ class NetworkTest(unittest.TestCase):
 
   def test_proper_range(self):
     self.assertTrue(analog_read(1) in range (0, 4096))
-      
+
   def test_all_pins(self):
     for i in range (0,6):
       self.assertTrue(analog_read(i) in range(4096))
@@ -34,4 +32,3 @@ class NetworkTest(unittest.TestCase):
 # Main: Run Test Cases
 if __name__ == '__main__':
     unittest.main()
-

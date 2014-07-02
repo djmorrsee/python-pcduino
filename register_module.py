@@ -1,9 +1,16 @@
+# Copyright (C) 2014 Daniel Morrissey & Andrey Shprengel
+#
+# Everyone is permitted to copy and distribute verbatim or modified
+# copies of this license document, and changing it is allowed as long
+# as the name is changed.
+
 """
 This file contains functions for registering the pcduino and for removing
 it from the server.
 
 This should only be done once
 """
+
 from bin.network.server_comm import PostJSONToServer, FormRegistrationJSON
 from bin.util.constants import MODULE_ID, AUTH_ID
 from bin.util.authorization import SaveModuleAuthorizationID

@@ -1,10 +1,18 @@
 #!/usr/bin/env python
+
+# Copyright (C) 2014 Daniel Morrissey & Andrey Shprengel
+#
+# Everyone is permitted to copy and distribute verbatim or modified
+# copies of this license document, and changing it is allowed as long
+# as the name is changed.
 """
 
 This file is the main function that the pcduino will run.
 It will take a reading from the sensors and the send the data to the server.
 It will also send an API requests to delete all data older than 24 hours.
 """
+
+
 
 from bin.pcduino.adc import analog_read
 from bin.network.server_comm import *
